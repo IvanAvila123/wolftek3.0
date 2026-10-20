@@ -182,7 +182,7 @@
 
                         @if(\App\Filament\Admin\Resources\Equipos\EquipoResource::canCreate())
                             <div class="fi-ta-actions flex flex-col gap-3 sm:flex-row sm:justify-center">
-                                <a href="{{ \App\Filament\Admin\Resources\EquipoResource::getUrl('create') }}"
+                                <a href="{{ \App\Filament\Admin\Resources\Equipos\EquipoResource::getUrl('create') }}"
                                    class="fi-btn fi-btn-size-md fi-btn-color-primary inline-flex items-center justify-center gap-1 rounded-lg px-4 py-2.5 text-sm font-semibold text-white shadow-sm bg-primary-600 hover:bg-primary-500 dark:bg-primary-500 dark:hover:bg-primary-400 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-colors">
                                     <x-heroicon-m-plus-circle class="h-5 w-5" />
                                     <span>Agregar Primer Equipo</span>
