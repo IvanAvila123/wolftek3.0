@@ -51,7 +51,7 @@ class OportunidadsTable
                         'warning' => 'revision',
                         'info' => ['haciendo_contratos', 'entrega_contratos', 'revision_contratos'],
                         'primary' => ['captura', 'verificacion_credito'],
-                        'danger' => ['rechazada_credito', 'verificacion_rechazada', 'rechazada', 'Cancelada'],
+                        'danger' => ['rechazada_credito', 'verificacion_rechazada', 'rechazada', 'cancelada'],
                         'success' => ['verificacion_aprobada', 'orden_entregada', 'aprobada'],
                         'secondary' => ['asignacion_equipo', 'cancela_envios', 'envios_confirmar', 'envios_ruta'],
                     ])

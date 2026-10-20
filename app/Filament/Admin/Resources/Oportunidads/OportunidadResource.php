@@ -94,7 +94,7 @@ class OportunidadResource extends Resource
     if ($user->can('view_all_oportunidades')) {
 
         // 2. Si tiene permiso, cuenta TODAS las oportunidades pendientes
-        $count = static::getModel()::where('estado', 'Pendiente')->count();
+        $count = static::getModel()::where('estado', 'pendiente')->count();
 
         // 3. Devuelve el contador si es mayor que cero, si no, null
         return $count > 0 ? (string)$count : null;

@@ -64,6 +64,7 @@ class OportunidadInfolist
                             ->icon('heroicon-o-flag')
                             ->badge()
                             ->color('primary')
+                            ->formatStateUsing(fn(string $state): string => config("oportunidad.estados.{$state}", $state))
                             ->placeholder('Sin estado definido'),
 
                         TextEntry::make('tipo_venta')

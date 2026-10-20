@@ -39,7 +39,7 @@ class EstadisticasVentas extends StatsOverviewWidget
                  // Color basado en el cambio
                 ->color($cambioPorcentaje >= 0 ? 'success' : 'danger'),
 
-            Stat::make('Ventas Pendientes', Oportunidad::where('estado', 'Pendiente')->count()),
+            Stat::make('Ventas Pendientes', Oportunidad::where('estado', 'pendiente')->count()),
             Stat::make('Ventas Rechazadas', Oportunidad::where('estado', 'rechazada')->count()),
             Stat::make('Ventas Canceladas', Oportunidad::where('estado', 'cancelada')->count()),
             Stat::make('Total Ventas', Oportunidad::count()),
