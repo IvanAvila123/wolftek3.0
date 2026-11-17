@@ -2,7 +2,6 @@
 
 namespace App\Filament\Admin\Resources\Lineas\Schemas;
 
-use Dom\Text;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -51,7 +50,7 @@ class LineasForm
                             ->live(onBlur: true),
                         Select::make('cliente_id')
                             ->required()
-                            ->relationship('clientes', 'nombre')
+                            ->relationship('cliente', 'nombre')
                             ->placeholder('Ej: AT&T México S.A. de C.V.')
                             ->helperText('ID del cliente al que pertenece la línea')
                             ->live(onBlur: true),
