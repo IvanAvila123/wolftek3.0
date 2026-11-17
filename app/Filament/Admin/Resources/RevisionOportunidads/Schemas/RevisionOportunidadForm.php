@@ -2,7 +2,6 @@
 
 namespace App\Filament\Admin\Resources\RevisionOportunidads\Schemas;
 
-use Dom\Text;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -27,7 +26,8 @@ class RevisionOportunidadForm
                     ->schema([
                        Select::make('oportunidad_id')
                             ->label('Oportunidad')
-                            ->relationship('oportunidad', 'id')
+                            ->relationship('oportunidad', 'id', fn ($query) => $query->with('cliente'))
+                            ->getOptionLabelFromRecordUsing(fn ($record) => "#{$record->id} · " . ($record->cliente?->nombre ?? 'Sin cliente'))
                             ->searchable()
                             ->preload()
                             ->placeholder('Selecciona una oportunidad')
@@ -55,8 +55,8 @@ class RevisionOportunidadForm
                        Select::make('estado')
                             ->label('Estado')
                             ->options([
-                                'aprobado' => 'Aprobado',
-                                'rechazado' => 'Rechazado',
+                                'aprobada' => 'Aprobada',
+                                'rechazada' => 'Rechazada',
                             ])
                             ->required()
                             ->placeholder('Selecciona un estado'),
@@ -70,7 +70,7 @@ class RevisionOportunidadForm
                     ->columnSpanFull()      // Ocupa todo el ancho del contenedor
                     ->columns(1)
                     ->schema([
-                       Textarea::make('comentario')
+                       Textarea::make('comentarios')
                             ->label('Comentario')
                             ->rows(4)
                             ->placeholder('Agrega un comentario sobre la revisión')

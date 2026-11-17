@@ -23,8 +23,9 @@ class RevisionOportunidadInfolist
                     ->columnSpanFull()
                     ->columns(1)
                     ->schema([
-                        TextEntry::make('oportunidad.nombre')
+                        TextEntry::make('oportunidad.cliente.nombre')
                             ->label('Oportunidad')
+                            ->formatStateUsing(fn ($state, $record) => "#{$record->oportunidad_id} · {$state}")
                             ->icon('heroicon-o-briefcase')
                             ->weight('bold')
                             ->size('lg')
@@ -44,9 +45,9 @@ class RevisionOportunidadInfolist
                             ->label('Estado de la Revisión')
                             ->icon('heroicon-o-document-check')
                             ->badge()
-                            ->color(fn ($state) => $state === 'aprobado' ? 'success' : 'danger')
+                            ->color(fn ($state) => match ($state) { 'aprobada' => 'success', 'rechazada' => 'danger', default => 'warning' })
                             ->placeholder('Sin estado asignado'),
-                        TextEntry::make('comentario')
+                        TextEntry::make('comentarios')
                             ->label('Comentario')
                             ->icon('heroicon-o-chat-bubble-left-right')
                             ->color('info')

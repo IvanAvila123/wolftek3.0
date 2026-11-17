@@ -20,9 +20,9 @@ class RevisionOportunidadsTable
     {
         return $table
             ->columns([
-                TextColumn::make('oportunidad.nombre')
+                TextColumn::make('oportunidad.cliente.nombre')
                     ->label('Oportunidad')
-                    ->sortable()
+                    ->formatStateUsing(fn ($state, $record) => "#{$record->oportunidad_id} · {$state}")
                     ->searchable(),
                 TextColumn::make('usuario.name')
                     ->label('Revisado por')
@@ -32,8 +32,8 @@ class RevisionOportunidadsTable
                     ->label('Estado')
                     ->colors([
                         'warning' => 'pendiente',
-                        'success' => 'aprobado',
-                        'danger' => 'rechazado',
+                        'success' => 'aprobada',
+                        'danger' => 'rechazada',
                     ])
                     ->formatStateUsing(fn (string $state): string => ucfirst($state))
                     ->sortable(),

@@ -28,6 +28,7 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class OportunidadsTable
 {
@@ -144,8 +145,23 @@ class OportunidadsTable
                         ->visible(function (Oportunidad $record): bool {
                             return auth()->user()->can('aprobar_oportunidad') && !in_array(strtolower($record->estado), ['aprobada', 'cancelada', 'orden_entregada']);
                         })
-                        ->action(function (Oportunidad $record) {
-                            $record->update(['estado' => 'aprobada']);
+                        ->schema([
+                            Textarea::make('comentarios')
+                                ->label('Comentario (opcional)')
+                                ->rows(3),
+                        ])
+                        ->action(function (Oportunidad $record, array $data) {
+                            // Cambia el estado y deja historial de quién aprobó y cuándo
+                            DB::transaction(function () use ($record, $data) {
+                                $record->update(['estado' => 'aprobada']);
+
+                                $record->revisionOportunidad()->create([
+                                    'usuario_id' => auth()->id(),
+                                    'estado' => 'aprobada',
+                                    'comentarios' => $data['comentarios'] ?? null,
+                                    'fecha_aprobacion' => now(),
+                                ]);
+                            });
 
                             Notification::make()
                                 ->title('Oportunidad aprobada')
