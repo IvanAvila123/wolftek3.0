@@ -63,7 +63,7 @@ class LineasInfolist
                             ->copyMessage('¡Equipo copiado!')
                             ->placeholder('Sin equipo asignado'),
 
-                        TextEntry::make('clientes.nombre')
+                        TextEntry::make('cliente.nombre')
                             ->label('Cliente Pertinente')
                             ->icon('heroicon-o-user')
                             ->size('md')

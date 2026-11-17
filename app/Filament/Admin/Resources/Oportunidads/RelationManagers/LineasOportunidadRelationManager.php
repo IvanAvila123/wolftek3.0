@@ -310,7 +310,7 @@ HTML;
                                     ->mapWithKeys(fn($l) => [$l->id => $this->formatLineaOption($l)])
                                     ->toArray();
                             })
-
+                            ->live()
                             ->required(),
 
                         Placeholder::make('seleccionadas')

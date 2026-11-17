@@ -49,10 +49,13 @@ class LineasForm
                             ->helperText('Modelo de equipo asignado a la línea')
                             ->live(onBlur: true),
                         Select::make('cliente_id')
+                            ->label('Cliente')
                             ->required()
                             ->relationship('cliente', 'nombre')
-                            ->placeholder('Ej: AT&T México S.A. de C.V.')
-                            ->helperText('ID del cliente al que pertenece la línea')
+                            ->searchable()
+                            ->preload()
+                            ->placeholder('Selecciona un cliente')
+                            ->helperText('Cliente al que pertenece la línea')
                             ->live(onBlur: true),
 
                     ]),

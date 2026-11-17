@@ -72,6 +72,7 @@ class OportunidadInfolist
                             ->icon('heroicon-o-currency-dollar')
                             ->badge()
                             ->color('success')
+                            ->formatStateUsing(fn (string $state): string => config("oportunidad.tipos_venta.{$state}", $state))
                             ->placeholder('Sin tipo definido'),
 
                         TextEntry::make('direccion_entrega')

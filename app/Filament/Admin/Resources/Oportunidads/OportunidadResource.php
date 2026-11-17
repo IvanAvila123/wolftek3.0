@@ -32,6 +32,8 @@ class OportunidadResource extends Resource
 
     protected static ?string $modelLabel = 'Oportunidad';
 
+    protected static ?string $pluralModelLabel = 'Oportunidades';
+
     protected static string|UnitEnum|null $navigationGroup = 'Gestion De Ventas';
 
     public static function getGlobalSearchResultTitle(Model $record): string|Htmlable

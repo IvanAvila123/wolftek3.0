@@ -33,7 +33,7 @@ class LineasTable
                 ->searchable()
                 ->copyable()
                 ->sortable(),
-            TextColumn::make('clientes.nombre')
+            TextColumn::make('cliente.nombre')
                 ->label('Cliente')
                 ->searchable()
                 ->copyable()
