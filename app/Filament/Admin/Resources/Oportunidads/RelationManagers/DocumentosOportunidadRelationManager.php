@@ -773,7 +773,7 @@ class DocumentosOportunidadRelationManager extends RelationManager
         }
 
         $obligatorios = collect($documentos[$tipoVenta])
-            ->where('obligatorio', true)
+            ->whereStrict('obligatorio', true)
             ->pluck('tipo')
             ->toArray();
 
@@ -811,13 +811,13 @@ class DocumentosOportunidadRelationManager extends RelationManager
         }
 
         $obligatorios = collect($documentos[$tipoVenta])
-            ->where('obligatorio', true)
+            ->whereStrict('obligatorio', true)
             ->pluck('tipo')
             ->map(fn($tipo) => $this->formatDocumentLabel($tipo))
             ->toArray();
 
         $condicionales = collect($documentos[$tipoVenta])
-            ->where('obligatorio', 'condicional')
+            ->whereStrict('obligatorio', 'condicional')
             ->pluck('tipo')
             ->map(fn($tipo) => $this->formatDocumentLabel($tipo))
             ->toArray();
@@ -845,15 +845,7 @@ class DocumentosOportunidadRelationManager extends RelationManager
         $oportunidad = $this->getOwnerRecord();
         $tipoVenta = $oportunidad->tipo_venta ?? 'venta_nueva';
 
-        $labels = [
-            'venta_nueva' => 'Venta Nueva',
-            'renovacion' => 'Renovación',
-            'renovacion_t1' => 'Renovación T1',
-            'renovacion_t2' => 'Renovación T2',
-            'renovacion_t3' => 'Renovación T3',
-            'adicion' => 'Adición',
-            'reporte' => 'Reporte',
-        ];
+        $labels = config('oportunidad.tipos_venta', []) + ['reporte' => 'Reporte'];
 
         return $labels[$tipoVenta] ?? ucfirst(str_replace('_', ' ', $tipoVenta));
     }
@@ -868,7 +860,7 @@ class DocumentosOportunidadRelationManager extends RelationManager
         }
 
         $obligatorios = collect($documentos[$tipoVenta])
-            ->where('obligatorio', true)
+            ->whereStrict('obligatorio', true)
             ->pluck('tipo')
             ->toArray();
 
@@ -889,7 +881,7 @@ class DocumentosOportunidadRelationManager extends RelationManager
         }
 
         $condicionales = collect($documentos[$tipoVenta])
-            ->where('obligatorio', 'condicional')
+            ->whereStrict('obligatorio', 'condicional')
             ->pluck('tipo')
             ->toArray();
 

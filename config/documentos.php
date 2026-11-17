@@ -14,7 +14,7 @@ return [
         ['tipo' => 'DOCUMENTO ADICIONAL', 'obligatorio' => false],
     ],
 
-    'renovacion_anticipada_T1' => [
+    'renovacion_anticipada_t1' => [
         ['tipo' => 'INE', 'obligatorio' => true],
         ['tipo' => 'OP', 'obligatorio' => true],
         ['tipo' => 'OC', 'obligatorio' => true],
@@ -27,7 +27,7 @@ return [
         ['tipo' => 'DOCUMENTO ADICIONAL', 'obligatorio' => false],
     ],
 
-    'renovacion_anticipada_T2' => [
+    'renovacion_anticipada_t2' => [
         ['tipo' => 'INE', 'obligatorio' => true],
         ['tipo' => 'OP', 'obligatorio' => true],
         ['tipo' => 'OC', 'obligatorio' => true],
@@ -40,7 +40,7 @@ return [
         ['tipo' => 'DOCUMENTO ADICIONAL', 'obligatorio' => false],
     ],
 
-    'renovacion_anticipada_T3' => [
+    'renovacion_anticipada_t3' => [
         ['tipo' => 'INE', 'obligatorio' => true],
         ['tipo' => 'OP', 'obligatorio' => true],
         ['tipo' => 'OC', 'obligatorio' => true],
